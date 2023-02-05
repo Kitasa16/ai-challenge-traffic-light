@@ -1,0 +1,16 @@
+nodes:
+- input.visual:
+    source: "pkdtest/video.mp4"
+- model.yolo:
+    detect: ["person"]
+- dabble.bbox_to_btm_midpoint
+- dabble.zone_count:
+    resolution: [2000, 1000] # Adjust this to your camera's input resolution
+    zones: [[[0, 0.5], [1,0.2], [1, 0.8], [0,1]]]
+
+- draw.bbox
+- draw.btm_midpoint
+- draw.zones
+- draw.legend:
+    show: ["zone_count"]
+- output.screen
